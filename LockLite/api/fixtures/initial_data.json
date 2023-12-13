@@ -1,38 +1,38 @@
 [
-  {
-    "model": "api.user",
-    "pk": 1,
-    "fields": {
-      "user_email": "user1@example.com",
-      "user_password": "password123"
-    }
-  },
-  {
-    "model": "api.user",
-    "pk": 2,
-    "fields": {
-      "user_email": "user2@example.com",
-      "user_password": "securepass"
-    }
-  },
-  {
-    "model": "api.credential",
-    "pk": 1,
-    "fields": {
-      "credentials_email": "cred1@example.com",
-      "credentials_password": "credpass1",
-      "label": "example.com",
-      "user": 1
-    }
-  },
-  {
-    "model": "api.credential",
-    "pk": 2,
-    "fields": {
-      "credentials_email": "cred2@example.com",
-      "credentials_password": "credpass2",
-      "label": "google.com",
-      "user": 2
-    }
-  }
+	{
+		"model": "api.user",
+		"pk": 1,
+		"fields": {
+			"user_email": "user1@example.com",
+			"user_password": "password123"
+		}
+	},
+	{
+		"model": "api.user",
+		"pk": 2,
+		"fields": {
+			"user_email": "user2@example.com",
+			"user_password": "securepass"
+		}
+	},
+	{
+		"model": "api.credential",
+		"pk": 1,
+		"fields": {
+			"credentials_email": "cred1@example.com",
+			"credentials_password": "credpass1",
+			"label": "example.com",
+			"user": 1
+		}
+	},
+	{
+		"model": "api.credential",
+		"pk": 2,
+		"fields": {
+			"credentials_email": "cred2@example.com",
+			"credentials_password": "credpass2",
+			"label": "google.com",
+			"user": 2
+		}
+	}
 ]
