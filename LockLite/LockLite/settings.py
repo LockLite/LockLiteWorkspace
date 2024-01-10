@@ -38,7 +38,6 @@ INSTALLED_APPS = [
 	'api.apps.ApiConfig',
 	'rest_framework',
 	'django_seed',
-	'webui.apps.WebuiConfig'
 ]
 
 MIDDLEWARE = [
