@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block title %}Test{% endblock %}
+{% block content %}
+	<h1>Hello world !</h1>
+	<p>Name : {{ name }}</p>
+	<div>
+		{% for user in users %}
+			<p>email : {{ user.user_email }}</p>
+			<p>password : {{ user.user_password }}</p>
+		{% endfor %}
+	</div>
+{% endblock %}

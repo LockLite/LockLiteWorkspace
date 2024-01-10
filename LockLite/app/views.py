@@ -5,9 +5,13 @@ from .models import User
 
 # Create your views here.
 def index(request, *args, **kwargs):
-	test = User.objects.all()
+	return render(request, 'index.html')
+
+
+def test(request, *args, **kwargs):
+	users = User.objects.all()
 	data = {
 		'name': "Test",
-		'users': test
+		'users': users
 	}
-	return render(request, 'index.html', data)
+	return render(request, 'test.html', data)
