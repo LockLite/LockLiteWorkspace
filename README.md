@@ -1,4 +1,4 @@
-[](LockLite/webui/static/img/locklite.png)
+<img src="LockLite/webui/static/img/locklite.png" alt="Locklite" style="width: 500px;">
 
 ### About the project
 
