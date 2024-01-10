@@ -1,4 +1,4 @@
-[](https://github.com/LockLite/LockLiteWorkspace/blob/master/LockLite/webui/static/img/locklite.png)
+[](LockLite/webui/static/img/locklite.png)
 
 ### About the project
 
