@@ -1,14 +1,10 @@
-<img src="LockLite/webui/static/img/locklite.png" alt="Locklite" style="width: 500px;">
+<img src="LockLite/app/public/img/locklite.png" alt="Locklite" style="width: 500px;">
 
 ### About the project
 
 A password manager.
 
 ### Built with
-
-Django REST Framework and ReactJS.
-
-[![React][React.js]][React-url]
 
 [![Django][Django.py]][Django-url]
 
@@ -18,20 +14,47 @@ Django REST Framework and ReactJS.
     ```sh
     pip install -r requirements.txt
    ```
-2. Compose docker
+2. Seed database
+    ```sh
+    python manage.py loaddata initial_data.json
+   ```
+3. Migrations
+    ```sh
+    python manage.py makemigrations
+   ```
+   ```sh
+    python manage.py migrate
+   ```
+4. Compose Docker
     ```sh
     docker compose up -d
    ```
-3. Run server
+5. Start Docker
+    ```sh
+    docker start locklite-postgresql
+   ```
+6. Access database
+    ```sh
+    docker exec -it locklite-postgresql psql -U locklite -d locklite
+     ```
+7. Run server
     ```sh
     python manage.py runserver
     ```
-
+8. Stop Docker
+    ```sh
+    docker stop locklite-postgresql
+   ```
+9. Postgresql commands
+	```sh
+	Launch Postgresql: psql postgres 
+	List tables: \l or \list
+	Connect to a database: \c 'database name'
+	List the tables in a database: \dt
+	Exit Postgresql: \q
+ 	```
 
 <!-- MARKDOWN LINKS & IMAGES -->
-
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
 
 [Django.py]: https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white
 [Django-url]: https://www.djangoproject.com/
