@@ -1,3 +1,5 @@
+[](https://github.com/LockLite/LockLiteWorkspace/blob/master/LockLite/webui/static/img/locklite.png)
+
 ### About the project
 
 A password manager.
@@ -12,18 +14,18 @@ Django REST Framework and ReactJS.
 
 ### Usage
 
-1 - Install dependencies
-```sh
-   pip install -r requirements.txt
+1. Install dependencies
+    ```sh
+    pip install -r requirements.txt
    ```
-2 - Compose docker
-```sh
-   docker compose up -d
+2. Compose docker
+    ```sh
+    docker compose up -d
    ```
-3 - Run server
-```sh
-   python manage.py runserver
-   ```
+3. Run server
+    ```sh
+    python manage.py runserver
+    ```
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
