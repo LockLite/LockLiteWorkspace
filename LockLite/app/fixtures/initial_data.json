@@ -1,6 +1,6 @@
 [
 	{
-		"model": "api.user",
+		"model": "app.user",
 		"pk": 1,
 		"fields": {
 			"user_email": "user1@example.com",
@@ -8,7 +8,7 @@
 		}
 	},
 	{
-		"model": "api.user",
+		"model": "app.user",
 		"pk": 2,
 		"fields": {
 			"user_email": "user2@example.com",
@@ -16,7 +16,7 @@
 		}
 	},
 	{
-		"model": "api.credential",
+		"model": "app.credential",
 		"pk": 1,
 		"fields": {
 			"credentials_email": "cred1@example.com",
@@ -26,7 +26,7 @@
 		}
 	},
 	{
-		"model": "api.credential",
+		"model": "app.credential",
 		"pk": 2,
 		"fields": {
 			"credentials_email": "cred2@example.com",
