@@ -4,5 +4,5 @@ venv/
 
 .env
 LockLite/webui/node_modules
-LockLite/api/migrations/*
+LockLite/app/migrations/*
 Locklite/webui/static/frontend/*
