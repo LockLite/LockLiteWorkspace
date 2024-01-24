@@ -34,10 +34,10 @@ def register(request, *args, **kwargs):
 			return render(request, 'registration/register.html', {'form': form})
 
 def homepage(request, *args, **kwargs):
-	current_user = request.user
-	user = User.objects.get(id=current_user.id)
+	user = User.objects.get(id=2)
+	user_email = user.email
 	data = {
 		'name': "Home",
-		'user': user
+		'user': user_email
 	}
-	return render(request, 'homepage.html', data)
+	return render(request, 'dashboard.jinja', data)
