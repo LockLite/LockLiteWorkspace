@@ -8,15 +8,6 @@ def index(request, *args, **kwargs):
 	return render(request, 'index.jinja')
 
 
-def test(request, *args, **kwargs):
-	users = User.objects.all()
-	data = {
-		'name': "Test",
-		'users': users
-	}
-	return render(request, 'test.jinja', data)
-
-
 def register(request, *args, **kwargs):
 	if request.method == 'GET':
 		form = RegisterForm()
