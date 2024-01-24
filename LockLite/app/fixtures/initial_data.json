@@ -1,18 +1,20 @@
 [
 	{
-		"model": "app.user",
+		"model": "auth.user",
 		"pk": 1,
 		"fields": {
-			"user_email": "user1@example.com",
-			"user_password": "password123"
+			"password": "password123",
+			"username": "us1",
+			"email": "user1@example.com"
 		}
 	},
 	{
-		"model": "app.user",
+		"model": "auth.user",
 		"pk": 2,
 		"fields": {
-			"user_email": "user2@example.com",
-			"user_password": "securepass"
+			"password": "securepass",
+			"username": "us2",
+			"email": "user2@example.com"
 		}
 	},
 	{
