@@ -3,10 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm
-from .models import User
-
-def index(request, *args, **kwargs):
-	return render(request, 'index.jinja')
 
 
 def register(request, *args, **kwargs):
@@ -25,10 +21,11 @@ def register(request, *args, **kwargs):
 		else:
 			return render(request, 'registration/register.jinja', {'form': form})
 
+
 @login_required(login_url="login")
-def dashboard(request, *args, **kwargs):
+def index(request, *args, **kwargs):
 	data = {
 		'name': request.user.username,
 		'user': request.user.email
 	}
-	return render(request, 'dashboard.jinja', data)
+	return render(request, 'index.jinja', data)

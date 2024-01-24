@@ -1,18 +1,10 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href={% static '/css/index.css' %}>
-	<title>Locklite - {% block title %}Home{% endblock %}</title>
-</head>
-<body>
-	<img src="{% static '/img/locklite.png' %}" alt="My image">
-	{% block content %}
-		<p>Home</p>
-	{% endblock %}
-</body>
-</html>
+{% extends "base.jinja" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+	<h1>Welcome to your dashboard page !</h1>
+	<p>Name : {{ name }}</p>
+	<div>
+		<p>email : {{ user }}</p>
+		<p><a href="{% url 'logout' %}">Log Out</a></p>
+	</div>
+{% endblock %}
