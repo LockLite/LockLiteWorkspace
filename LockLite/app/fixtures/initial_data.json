@@ -16,6 +16,14 @@
 			"username": "us2",
 			"email": "user2@example.com"
 		}
+	},{
+		"model": "auth.user",
+		"pk": 3,
+		"fields": {
+			"password": "azerty67",
+			"username": "al1",
+			"email": "al1@test.com"
+		}
 	},
 	{
 		"model": "app.credential",
