@@ -7,12 +7,14 @@
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href={% static '/css/index.css' %}>
-	<title>Locklite - {% block title %}Home{% endblock %}</title>
+	<title>Locklite - {% block title %}Home{% endblock title %}</title>
 </head>
 <body>
+<div class="container">
 	<img src="{% static '/img/locklite.png' %}" alt="My image">
 	{% block content %}
-		<p>Home</p>
-	{% endblock %}
+		<p>Base</p>
+	{% endblock content %}
+</div>
 </body>
 </html>
