@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,6 +9,7 @@
 	<title>Locklite - {% block title %}Home{% endblock %}</title>
 </head>
 <body>
+	<img src="{% static '/img/locklite.png' %}" alt="My image">
 	{% block content %}
 		<p>Home</p>
 	{% endblock %}
