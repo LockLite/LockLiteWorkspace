@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm
+from .models import Credential
 
 
 def register(request, *args, **kwargs):
@@ -24,8 +25,11 @@ def register(request, *args, **kwargs):
 
 @login_required(login_url="login")
 def index(request, *args, **kwargs):
+	print(request.user.id)
+	print(Credential.objects.filter(user_id=request.user.id).values())
 	data = {
 		'name': request.user.username,
-		'user': request.user.email
+		'user': request.user.email,
+		'credentials': Credential.objects.filter(user_id=request.user.id).values()
 	}
 	return render(request, 'index.jinja', data)
