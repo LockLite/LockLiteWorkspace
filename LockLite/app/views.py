@@ -12,7 +12,7 @@ def index(request, *args, **kwargs):
 def register(request, *args, **kwargs):
 	if request.method == 'GET':
 		form = RegisterForm()
-		return render(request, 'registration/register.html', {'form': form})
+		return render(request, 'registration/register.jinja', {'form': form})
 	if request.method == 'POST':
 		form = RegisterForm(request.POST)
 		if form.is_valid():
@@ -23,14 +23,12 @@ def register(request, *args, **kwargs):
 			login(request, user)
 			return redirect('login')
 		else:
-			return render(request, 'registration/register.html', {'form': form})
+			return render(request, 'registration/register.jinja', {'form': form})
 
 @login_required(login_url="login")
 def dashboard(request, *args, **kwargs):
-	user = User.objects.get(id=2)
-	user_email = user.email
 	data = {
-		'name': "Dashboard",
-		'user': user_email
+		'name': request.user.username,
+		'user': request.user.email
 	}
 	return render(request, 'dashboard.jinja', data)
