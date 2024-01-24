@@ -36,5 +36,15 @@
 			"label": "google.com",
 			"user": 2
 		}
+	},
+	{
+		"model": "app.credential",
+		"pk": 3,
+		"fields": {
+			"credentials_email": "cred3@example.com",
+			"credentials_password": "credpass3",
+			"label": "bing.com",
+			"user": 3
+		}
 	}
 ]

@@ -7,4 +7,10 @@
 		<p>email : {{ user }}</p>
 		<p><a href="{% url 'logout' %}">Log Out</a></p>
 	</div>
+	<div>
+		{% for credential in credentials %}
+			<p>email : {{ credential.credentials_email }}</p>
+			<p>label : {{ credential.label }}</p>
+		{% endfor %}
+	</div>
 {% endblock %}
