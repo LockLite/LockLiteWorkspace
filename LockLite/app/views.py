@@ -29,7 +29,7 @@ def register(request, *args, **kwargs):
 			user.save()
 			messages.success(request, 'You have signed up successfully.')
 			login(request, user)
-			return redirect('/')
+			return redirect('login')
 		else:
 			return render(request, 'registration/register.html', {'form': form})
 
