@@ -5,6 +5,9 @@ install:
 start:
 	docker start locklite-postgresql
 
+shell:
+	python LockLite/manage.py shell
+
 data:
 	python LockLite/manage.py loaddata initial_data.json
 
