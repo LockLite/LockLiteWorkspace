@@ -5,7 +5,7 @@ from .models import User
 
 # Create your views here.
 def index(request, *args, **kwargs):
-	return render(request, 'index.html')
+	return render(request, 'index.jinja')
 
 
 def test(request, *args, **kwargs):
@@ -14,4 +14,4 @@ def test(request, *args, **kwargs):
 		'name': "Test",
 		'users': users
 	}
-	return render(request, 'test.html', data)
+	return render(request, 'test.jinja', data)
