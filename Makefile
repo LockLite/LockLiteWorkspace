@@ -1,19 +1,22 @@
+MANAGEPY := LockLite/manage.py
+DOCKER_NAME := locklite-postgresql
+
 install:
 	pip install -r requirements.txt
 	docker compose up -d
 
 start:
-	docker start locklite-postgresql
+	docker start $(DOCKER_NAME)
 
 shell:
-	python LockLite/manage.py shell
+	python $(MANAGEPY) shell
 
 migrate:
-	python LockLite/manage.py makemigrations app
-	python LockLite/manage.py migrate
+	python $(MANAGEPY) makemigrations app
+	python $(MANAGEPY) migrate
 
 data:
-	python LockLite/manage.py loaddata initial_data.json
+	python $(MANAGEPY) loaddata initial_data.json
 
 db:
 	@echo "Launch Postgresql: psql postgres "
@@ -22,15 +25,15 @@ db:
 	@echo "List the tables in a database: \dt"
 	@echo "Exit Postgresql: \q"
 	@echo "-----------------------------------------------------"
-	docker exec -it locklite-postgresql psql -U locklite -d locklite
+	docker exec -it $(DOCKER_NAME) psql -U locklite -d locklite
 
 run:
-	python LockLite/manage.py runserver
+	python $(MANAGEPY) runserver
 
 stop:
-	docker stop locklite-postgresql
+	docker stop $(DOCKER_NAME)
 
 requirements:
 	pip freeze > requirements.txt
 
-.PHONY: install start data migrate db run stop requirements
+.PHONY: install start shell migrate data db run stop requirements
