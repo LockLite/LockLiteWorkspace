@@ -1,26 +1,49 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm
 from .models import Credential
 
 
+class CustomLoginView(LoginView):
+	link_page = "register"
+	template_name = 'auth.jinja'
+	extra_context = {
+		'title': "Login",
+		'link': {
+			'text': "Don't have an account?",
+			'name': link_page.capitalize(),
+			'page': link_page
+		}
+	}
+
+
 def register(request, *args, **kwargs):
+	link_page = "login"
+	context = {
+		'title': "Register",
+		'link': {
+			'text': "Already has an account?",
+			'name': link_page.capitalize(),
+			'page': link_page
+		}
+	}
 	if request.method == 'GET':
-		form = RegisterForm()
-		return render(request, 'registration/register.jinja', {'form': form})
+		context['form'] = RegisterForm()
+		return render(request, 'auth.jinja', context)
 	if request.method == 'POST':
-		form = RegisterForm(request.POST)
-		if form.is_valid():
-			user = form.save(commit=False)
+		context['form'] = RegisterForm(request.POST)
+		if context['form'].is_valid():
+			user = context['form'].save(commit=False)
 			user.username = user.username.lower()
 			user.save()
 			messages.success(request, 'You have signed up successfully.')
 			login(request, user)
-			return redirect('login')
+			return redirect(link_page)
 		else:
-			return render(request, 'registration/register.jinja', {'form': form})
+			return render(request, 'auth.jinja', context)
 
 
 @login_required(login_url="login")

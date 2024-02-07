@@ -3,7 +3,7 @@
 {% block content %}
 	<form class="auth-form" method="POST" novalidate>
 		{% csrf_token %}
-		<h2>Register</h2>
+		<h2>{{ title }}</h2>
 
 		{% for field in form %}
 			<div>
@@ -18,7 +18,7 @@
 				{% endif %}
 			</div>
 		{% endfor %}
-		<input type="submit" value="Register"/>
-		<p>Already has an account? <a href="{% url 'login' %}">Login</a></p>
+		<input type="submit" value="{{ title }}"/>
+		<p>{{ link.text }} <a href="{% url link.page %}">{{ link.name }}</a></p>
 	</form>
 {% endblock content %}
