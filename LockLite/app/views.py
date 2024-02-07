@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm
+from .forms import CredentialForm
 from .models import Credential
 
 
@@ -54,3 +55,17 @@ def index(request, *args, **kwargs):
 		'credentials': Credential.objects.filter(user_id=request.user.id).values()
 	}
 	return render(request, 'index.jinja', data)
+
+
+@login_required(login_url="login")
+def createcred(request):
+	if request.method == 'POST':
+		form = CredentialForm(request.POST)
+		if form.is_valid():
+			credential = form.save()
+			return redirect('index')
+	else:
+		form = CredentialForm()
+		return render(request,
+					  'createcred.jinja',
+					  {'form': form})
