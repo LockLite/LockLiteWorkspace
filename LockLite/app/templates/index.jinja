@@ -8,6 +8,7 @@
 		<p><a href="{% url 'logout' %}">Log Out</a></p>
 	</div>
 	<div>
+		<p>Here are your credentials :</p>
 		{% for credential in credentials %}
 			<p>email : {{ credential.credentials_email }}</p>
 			<p>label : {{ credential.label }}</p>

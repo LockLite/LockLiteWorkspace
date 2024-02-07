@@ -17,5 +17,15 @@
 			"label": "example.com",
 			"user": 1
 		}
+	},
+	{
+		"model": "app.credential",
+		"pk": 2,
+		"fields": {
+			"credentials_email": "cred2@test.com",
+			"credentials_password": "credpass2",
+			"label": "test.com",
+			"user": 1
+		}
 	}
 ]
