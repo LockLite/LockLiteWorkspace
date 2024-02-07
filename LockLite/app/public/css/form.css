@@ -1,0 +1,11 @@
+.auth-form {
+	width: 300px;
+	background-color: white;
+	padding: 30px;
+	border-radius: 10px;
+}
+
+.auth-form .infos {
+	font-size: 12px;
+	color: grey;
+}

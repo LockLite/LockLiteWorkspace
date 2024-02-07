@@ -5,20 +5,22 @@
 		{% csrf_token %}
 		<h2>{{ title }}</h2>
 
-		{% for field in form %}
-			<div>
-				{{ field.label_tag }}
-				{{ field }}
-				{% if field.errors %}
-					<ul>
-						{% for error in field.errors %}
-							<li>{{ error }}</li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-			</div>
-		{% endfor %}
-		<input type="submit" value="{{ title }}"/>
-		<p>{{ link.text }} <a href="{% url link.page %}">{{ link.name }}</a></p>
+		<div class="fields">
+			{% for field in form %}
+				<div class="field">
+					{{ field.label_tag }}
+					{{ field }}
+					{% if field.errors %}
+						<ul>
+							{% for error in field.errors %}
+								<li>{{ error }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+		<p class="infos">{{ link.text }} <a href="{% url link.page %}">{{ link.name }}</a></p>
+		<input class="button" type="submit" value="{{ title }}"/>
 	</form>
 {% endblock content %}

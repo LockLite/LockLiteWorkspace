@@ -3,12 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 from .forms import CredentialForm
 from .models import Credential
 
 
 class CustomLoginView(LoginView):
+	authentication_form = LoginForm
 	link_page = "register"
 	template_name = 'auth.jinja'
 	extra_context = {
@@ -66,6 +67,4 @@ def createcred(request):
 			return redirect('index')
 	else:
 		form = CredentialForm()
-		return render(request,
-					  'createcred.jinja',
-					  {'form': form})
+		return render(request, 'createcred.jinja', {'form': form})

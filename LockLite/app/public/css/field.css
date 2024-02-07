@@ -1,0 +1,22 @@
+.fields {
+	padding: 20px 0;
+}
+
+.fields .field {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding: 15px 0;
+	border-bottom: solid 1px lightgrey;
+}
+
+.fields .field label {
+	font-size: 14px;
+}
+.fields .field input {
+	outline: none;
+	border: none;
+}
+.fields .field input::placeholder {
+	color: grey;
+}
