@@ -3,26 +3,9 @@
 		"model": "auth.user",
 		"pk": 1,
 		"fields": {
-			"password": "password123",
-			"username": "us1",
-			"email": "user1@example.com"
-		}
-	},
-	{
-		"model": "auth.user",
-		"pk": 2,
-		"fields": {
-			"password": "securepass",
-			"username": "us2",
-			"email": "user2@example.com"
-		}
-	},{
-		"model": "auth.user",
-		"pk": 3,
-		"fields": {
-			"password": "azerty67",
-			"username": "al1",
-			"email": "al1@test.com"
+			"password": "pbkdf2_sha256$600000$2CQ2Ykd76j8aqPmSh5GZGO$xZ7vZ5ixqLebBcw68K4oq2WO25L6NYLLtTh+5bHYUsc=",
+			"username": "lck",
+			"email": "lck@test.com"
 		}
 	},
 	{
@@ -33,26 +16,6 @@
 			"credentials_password": "credpass1",
 			"label": "example.com",
 			"user": 1
-		}
-	},
-	{
-		"model": "app.credential",
-		"pk": 2,
-		"fields": {
-			"credentials_email": "cred2@example.com",
-			"credentials_password": "credpass2",
-			"label": "google.com",
-			"user": 2
-		}
-	},
-	{
-		"model": "app.credential",
-		"pk": 3,
-		"fields": {
-			"credentials_email": "cred3@example.com",
-			"credentials_password": "credpass3",
-			"label": "bing.com",
-			"user": 3
 		}
 	}
 ]

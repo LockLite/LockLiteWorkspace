@@ -25,8 +25,6 @@ def register(request, *args, **kwargs):
 
 @login_required(login_url="login")
 def index(request, *args, **kwargs):
-	print(request.user.id)
-	print(Credential.objects.filter(user_id=request.user.id).values())
 	data = {
 		'name': request.user.username,
 		'user': request.user.email,

@@ -8,12 +8,12 @@ start:
 shell:
 	python LockLite/manage.py shell
 
+migrate:
+	python LockLite/manage.py makemigrations app
+	python LockLite/manage.py migrate
+
 data:
 	python LockLite/manage.py loaddata initial_data.json
-
-migrate:
-	python LockLite/manage.py makemigrations
-	python LockLite/manage.py migrate
 
 db:
 	@echo "Launch Postgresql: psql postgres "
