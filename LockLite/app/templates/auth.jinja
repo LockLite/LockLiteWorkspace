@@ -8,12 +8,14 @@
 		<div class="fields">
 			{% for field in form %}
 				<div class="field">
-					{{ field.label_tag }}
-					{{ field }}
+					<div class="content">
+						{{ field.label_tag }}
+						{{ field }}
+					</div>
 					{% if field.errors %}
-						<ul>
+						<ul class="errors">
 							{% for error in field.errors %}
-								<li>{{ error }}</li>
+								<li class="error">{{ error }}</li>
 							{% endfor %}
 						</ul>
 					{% endif %}
