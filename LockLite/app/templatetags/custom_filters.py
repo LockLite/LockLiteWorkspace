@@ -4,5 +4,5 @@ register = template.Library()
 
 
 @register.filter(name='get_value')
-def get_value(dict, key):
-	return dict[key]
+def get_value(_dict, key):
+	return _dict[key]

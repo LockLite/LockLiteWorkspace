@@ -5,29 +5,30 @@
 		<div class="content">
 			<h2 class="title">{{ datatable_title }}</h2>
 			<div class="buttons">
-				{% if datatable_button %}
-					<a class="button" href={{ datatable_button.link }}>
-						<i class="fa-solid fa-plus"></i>
-						{{ datatable_button.label }}
-					</a>
-				{% endif %}
+				<a class="button" href={{ datatable_actions.create }}>
+					<i class="fa-solid fa-plus"></i>
+					Create
+				</a>
 			</div>
 		</div>
 	</caption>
 	<thead class="headers">
 	<tr class="line head">
 		{% for col in datatable_columns %}
-			<td class="cell header">{{ col.name }}</td>
+			<td style="width: calc(100%/{{ datatable_col_length }})" class="cell header">
+				{{ col.name }}
+			</td>
 		{% endfor %}
+			<td class="cell header"></td>
 	</tr>
 	</thead>
 	<tbody class="body">
 	{% for element in datatable_data %}
 		<tr class="line dataline">
 			{% for col in datatable_columns %}
-				<td class="cell data">
+				<td style="width: calc(100/{{ datatable_col_length }})" class="cell data">
 					{% if col.key == 'credentials_password' %}
-						<input type="password" value={{ element|get_value:col.key }}>
+						<input type="password" readonly value={{ element|get_value:col.key }}>
 					{% elif col.key == 'label' %}
 						<b>{{ element|get_value:col.key }}</b>
 					{% else %}
@@ -35,6 +36,16 @@
 					{% endif %}
 				</td>
 			{% endfor %}
+			<td style="width: calc(100/{{ datatable_col_length }})" class="cell data">
+				<div class="buttons">
+					<a href={{ datatable_actions.edit }}>
+						<i class="fa-solid fa-pen"></i>
+					</a>
+					<a href={{ datatable_actions.delete }}>
+						<i class="fa-solid fa-trash"></i>
+					</a>
+				</div>
+			</td>
 		</tr>
 	{% endfor %}
 	</tbody>

@@ -56,11 +56,13 @@ def index(request, *args, **kwargs):
 
 		# Datatable
 		'datatable_title': 'Credentials',
-		'datatable_button': {
-			'label': 'Create',
-			'link': 'createcred'
-		},
 		'datatable_data': Credential.objects.filter(user_id=request.user.id).values(),
+		'datatable_col_length': 4,
+		'datatable_actions': {
+			'create': 'createcred',
+			'edit': '',
+			'delete': ''
+		},
 		'datatable_columns': [
 			{
 				'name': 'Company',
