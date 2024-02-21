@@ -31,3 +31,9 @@ class CredentialForm(forms.ModelForm):
 	class Meta:
 		model = Credential
 		fields = '__all__'
+
+	def __init__(self, *args, **kwargs):
+		user = kwargs.pop('user', None)
+		super(CredentialForm, self).__init__(*args, **kwargs)
+		if user:
+			self.fields['user'].queryset = User.objects.filter(username=user.username)
