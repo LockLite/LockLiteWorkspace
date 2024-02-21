@@ -13,3 +13,7 @@
 	color: #157ee7;
 	background-color: white;
 }
+
+.button i {
+	padding-right: 2px;
+}

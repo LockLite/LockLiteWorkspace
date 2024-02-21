@@ -2,25 +2,38 @@
 
 <table class="datatable">
 	<caption class="caption">
-		<h2 class="title">{{ datatable_title }}</h2>
-		<div class="buttons">
-			{% if datatable_button %}
-				<a href={{ datatable_button.link }}>{{ datatable_button.label }}</a>
-			{% endif %}
+		<div class="content">
+			<h2 class="title">{{ datatable_title }}</h2>
+			<div class="buttons">
+				{% if datatable_button %}
+					<a class="button" href={{ datatable_button.link }}>
+						<i class="fa-solid fa-plus"></i>
+						{{ datatable_button.label }}
+					</a>
+				{% endif %}
+			</div>
 		</div>
 	</caption>
 	<thead class="headers">
-	<tr>
+	<tr class="line head">
 		{% for col in datatable_columns %}
-			<td class="header">{{ col.name }}</td>
+			<td class="cell header">{{ col.name }}</td>
 		{% endfor %}
 	</tr>
 	</thead>
 	<tbody class="body">
 	{% for element in datatable_data %}
-		<tr class="line">
+		<tr class="line dataline">
 			{% for col in datatable_columns %}
-				<td class="cell">{{ element|get_value:col.key }}</td>
+				<td class="cell data">
+					{% if col.key == 'credentials_password' %}
+						<input type="password" value={{ element|get_value:col.key }}>
+					{% elif col.key == 'label' %}
+						<b>{{ element|get_value:col.key }}</b>
+					{% else %}
+						<span>{{ element|get_value:col.key }}</span>
+					{% endif %}
+				</td>
 			{% endfor %}
 		</tr>
 	{% endfor %}

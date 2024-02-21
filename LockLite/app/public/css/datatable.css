@@ -1,0 +1,67 @@
+.datatable {
+	width: 50%;
+	border-collapse: collapse;
+}
+
+/* ----------- CAPTION ----------- */
+
+.datatable .caption .content {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 0;
+}
+
+/* BUTTONS */
+
+.datatable .caption .content .buttons .button {
+	text-decoration: none;
+	background-color: black;
+	color: white;
+	border-color: black;
+	padding: 8px 15px;
+	border-radius: 7px;
+}
+.datatable .caption .content .buttons .button:hover {
+	background-color: white;
+	color: black;
+}
+
+/* ----------- HEADERS ----------- */
+
+.datatable .headers {
+	text-transform: uppercase;
+	font-size: 12px;
+	color: grey;
+}
+.datatable .headers .header {
+	border-bottom: 2px solid lightgrey;
+}
+
+/* ----------- LINES ----------- */
+
+.datatable .line.head {
+	height: 50px;
+}
+.datatable .line.dataline {
+	height: 50px;
+}
+
+/* ----------- CELLS ----------- */
+
+.datatable .line .cell {
+	width: 33%;
+}
+.datatable .line .cell.data {
+	font-size: 14px;
+	border-bottom: 1px solid lightgrey;
+}
+.datatable .line .cell.data b {
+	font-weight: 500;
+
+}
+.datatable .line .cell.data input {
+	outline: none;
+	border: none;
+	background: none;
+	pointer-events: none;
+}
