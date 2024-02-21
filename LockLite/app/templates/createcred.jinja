@@ -1,7 +1,7 @@
 {% extends "base.jinja" %}
-{% block title %}Credential creation{% endblock %}
+{% block title %}Create credential{% endblock %}
 {% block content %}
-	<h1>Credential creation</h1>
+	<h1>Create credential</h1>
 	<form action="" method="post" novalidate>
 	  {% csrf_token %}
 	  {{ form.as_p }}

@@ -4,14 +4,14 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm, LoginForm
-from .forms import CredentialForm
+from .forms import AddCredentialForm
 from .models import Credential
 
 
 class CustomLoginView(LoginView):
 	authentication_form = LoginForm
 	link_page = "register"
-	template_name = 'auth.jinja'
+	template_name = 'form.jinja'
 	extra_context = {
 		'title': "Login",
 		'link': {
@@ -34,7 +34,7 @@ def register(request, *args, **kwargs):
 	}
 	if request.method == 'GET':
 		context['form'] = RegisterForm()
-		return render(request, 'auth.jinja', context)
+		return render(request, 'form.jinja', context)
 	if request.method == 'POST':
 		context['form'] = RegisterForm(request.POST)
 		if context['form'].is_valid():
@@ -45,7 +45,7 @@ def register(request, *args, **kwargs):
 			login(request, user)
 			return redirect(link_page)
 		else:
-			return render(request, 'auth.jinja', context)
+			return render(request, 'form.jinja', context)
 
 
 @login_required(login_url="login")
@@ -60,13 +60,24 @@ def index(request, *args, **kwargs):
 
 @login_required(login_url="login")
 def createcred(request):
+	link_page = "index"
+	context = {
+		'title': "Create credential",
+		'link': {
+			'text': "Show credentials",
+			'name': "here",
+			'page': link_page
+		}
+	}
 	if request.method == 'POST':
-		form = CredentialForm(request.POST)
-		if form.is_valid():
-			credential = form.save(commit=False)
+		context['form'] = AddCredentialForm(request.POST)
+		if context['form'].is_valid():
+			credential = context['form'].save(commit=False)
 			credential.user = request.user
 			credential.save()
 			return redirect('index')
+		else:
+			return render(request, 'form.jinja', context)
 	else:
-		form = CredentialForm()
-		return render(request, 'createcred.jinja', {'form': form})
+		context['form'] = AddCredentialForm()
+		return render(request, 'form.jinja', context)
