@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-	<img src="{% static '/img/locklite.png' %}" alt="My image">
+	<a href="{% url 'index' %}"><img src="{% static '/img/locklite.png' %}" alt="My image"></a>
 	{% block content %}
 		<p>Base</p>
 	{% endblock content %}
