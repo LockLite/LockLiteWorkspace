@@ -3,11 +3,14 @@
 }
 
 .fields .field {
+	padding: 15px 0;
+	border-bottom: solid 1px lightgrey;
+}
+
+.fields .field .content {
 	display: flex;
 	align-items: center;
 	gap: 5px;
-	padding: 15px 0;
-	border-bottom: solid 1px lightgrey;
 }
 
 .fields .field label {
@@ -19,4 +22,13 @@
 }
 .fields .field input::placeholder {
 	color: grey;
+}
+
+.fields .field .errors {
+	padding: 0 12px;
+}
+.fields .field .errors .error {
+	font-size: 12px;
+	padding: 2px 0;
+	color: red;
 }

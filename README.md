@@ -6,11 +6,7 @@ A password manager.
 
 ## Built with
 
-[![Django][Django.py]][Django-url]
-
-[![HTML5][HTML5]][HTML-url]
-
-[![CSS3][CSS3]][CSS-url]
+[![Django][Django.py]][Django-url][![HTML5][HTML5]][HTML-url][![CSS3][CSS3]][CSS-url]
 
 ## Installation
 
