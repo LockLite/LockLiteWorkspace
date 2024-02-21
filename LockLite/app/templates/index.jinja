@@ -1,18 +1,10 @@
 {% extends "base.jinja" %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-	<h1>Welcome to your dashboard page !</h1>
-	<p>Name : {{ name }}</p>
 	<div>
-		<p>email : {{ user }}</p>
+		<h1>Welcome to your dashboard page !</h1>
+		<p>Name : {{ dashboard_username }}</p>
 		<p><a href="{% url 'logout' %}">Log Out</a></p>
 	</div>
-	<div>
-		<p>Here are your credentials :</p>
-		{% for credential in credentials %}
-			<p>email : {{ credential.credentials_email }}</p>
-			<p>label : {{ credential.label }}</p>
-		{% endfor %}
-	</div>
-	<p><a href="{% url 'createcred' %}">Create credential</a></p>
+	{% include 'datatable.jinja' %}
 {% endblock %}

@@ -13,8 +13,8 @@ class CustomLoginView(LoginView):
 	link_page = "register"
 	template_name = 'form.jinja'
 	extra_context = {
-		'title': "Login",
-		'link': {
+		'form_title': "Login",
+		'form_link': {
 			'text': "Don't have an account?",
 			'name': link_page.capitalize(),
 			'page': link_page
@@ -25,8 +25,8 @@ class CustomLoginView(LoginView):
 def register(request, *args, **kwargs):
 	link_page = "login"
 	context = {
-		'title': "Register",
-		'link': {
+		'form_title': "Register",
+		'form_link': {
 			'text': "Already has an account?",
 			'name': link_page.capitalize(),
 			'page': link_page
@@ -50,20 +50,41 @@ def register(request, *args, **kwargs):
 
 @login_required(login_url="login")
 def index(request, *args, **kwargs):
-	data = {
-		'name': request.user.username,
-		'user': request.user.email,
-		'credentials': Credential.objects.filter(user_id=request.user.id).values()
+	context = {
+		# Dashboard
+		'dashboard_username': request.user.username,
+
+		# Datatable
+		'datatable_title': 'Credentials',
+		'datatable_button': {
+			'label': 'Create',
+			'link': 'createcred'
+		},
+		'datatable_data': Credential.objects.filter(user_id=request.user.id).values(),
+		'datatable_columns': [
+			{
+				'name': 'Company',
+				'key': 'label'
+			},
+			{
+				'name': 'Email',
+				'key': 'credentials_email'
+			},
+			{
+				'name': 'Password',
+				'key': 'credentials_password'
+			}
+		]
 	}
-	return render(request, 'index.jinja', data)
+	return render(request, 'index.jinja', context)
 
 
 @login_required(login_url="login")
 def createcred(request):
 	link_page = "index"
 	context = {
-		'title': "Create credential",
-		'link': {
+		'form_title': "Create credential",
+		'form_link': {
 			'text': "Show credentials",
 			'name': "here",
 			'page': link_page

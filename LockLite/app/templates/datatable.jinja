@@ -1,0 +1,28 @@
+{% load custom_filters %}
+
+<table class="datatable">
+	<caption class="caption">
+		<h2 class="title">{{ datatable_title }}</h2>
+		<div class="buttons">
+			{% if datatable_button %}
+				<a href={{ datatable_button.link }}>{{ datatable_button.label }}</a>
+			{% endif %}
+		</div>
+	</caption>
+	<thead class="headers">
+	<tr>
+		{% for col in datatable_columns %}
+			<td class="header">{{ col.name }}</td>
+		{% endfor %}
+	</tr>
+	</thead>
+	<tbody class="body">
+	{% for element in datatable_data %}
+		<tr class="line">
+			{% for col in datatable_columns %}
+				<td class="cell">{{ element|get_value:col.key }}</td>
+			{% endfor %}
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>

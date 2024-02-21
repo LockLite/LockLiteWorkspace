@@ -3,7 +3,7 @@
 {% block content %}
 	<form class="auth-form" method="POST" novalidate>
 		{% csrf_token %}
-		<h2>{{ title }}</h2>
+		<h2>{{ form_title }}</h2>
 
 		<div class="fields">
 			{% for field in form %}
@@ -22,9 +22,9 @@
 				</div>
 			{% endfor %}
 		</div>
-		{% if link %}
-			<p class="infos">{{ link.text }} <a href="{% url link.page %}">{{ link.name }}</a></p>
+		{% if form_link %}
+			<p class="infos">{{ form_link.text }} <a href="{% url form_link.page %}">{{ form_link.name }}</a></p>
 		{% endif %}
-		<input class="button" type="submit" value="{{ title }}"/>
+		<input class="button" type="submit" value="{{ form_title }}"/>
 	</form>
 {% endblock content %}
