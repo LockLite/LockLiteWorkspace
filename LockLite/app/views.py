@@ -3,8 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import RegisterForm, LoginForm
-from .forms import AddCredentialForm
+from .forms import RegisterForm, LoginForm, AddCredentialForm, UpdateCredentialForm
 from .models import Credential
 
 
@@ -101,4 +100,30 @@ def createcred(request):
 			return render(request, 'form.jinja', context)
 	else:
 		context['form'] = AddCredentialForm()
+		return render(request, 'form.jinja', context)
+
+@login_required(login_url="login")
+def updatecred(request, pk):
+	credential = Credential.objects.get(pk=pk)
+	link_page = "index"
+	context = {
+		'form_title': "Update credential",
+		'form_link': {
+			'text': "Show credentials",
+			'name': "here",
+			'page': link_page
+		},
+		'form_credential': credential
+	}
+	if request.method == 'POST':
+		context['form'] = UpdateCredentialForm(request.POST, instance=credential)
+		if context['form'].is_valid():
+			credential = context['form'].save(commit=False)
+			credential.user = request.user
+			credential.save()
+			return redirect('index')
+		else:
+			return render(request, 'form.jinja', context)
+	else:
+		context['form'] = UpdateCredentialForm()
 		return render(request, 'form.jinja', context)

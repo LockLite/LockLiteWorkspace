@@ -86,3 +86,30 @@ class AddCredentialForm(forms.ModelForm):
 		model = Credential
 		fields = '__all__'
 		exclude = ['user']
+
+class UpdateCredentialForm(forms.ModelForm):
+	credentials_email = forms.EmailField(
+		label="Email",
+		widget=forms.EmailInput(attrs={
+			"placeholder": "Insert your credential email"
+		})
+	)
+	credentials_password = forms.CharField(
+		label="Password",
+		strip=False,
+		widget=forms.PasswordInput(attrs={
+			"placeholder": "Insert your credential password"
+		})
+	)
+	label = forms.CharField(
+		label="Name",
+		strip=False,
+		widget=forms.TextInput(attrs={
+			"placeholder": "Insert a name"
+		})
+	)
+
+	class Meta:
+		model = Credential
+		fields = '__all__'
+		exclude = ['user']
