@@ -60,14 +60,13 @@ def index(request, *args, **kwargs):
 
 @login_required(login_url="login")
 def createcred(request):
-	print(request.user.username)
 	if request.method == 'POST':
-		form = CredentialForm(request.POST, user=request.user)
+		form = CredentialForm(request.POST)
 		if form.is_valid():
-			instance = form.save(commit=False)
-			instance.user = request.user
-			instance.save()
+			credential = form.save(commit=False)
+			credential.user = request.user
+			credential.save()
 			return redirect('index')
 	else:
-		form = CredentialForm(user=request.user)
+		form = CredentialForm()
 		return render(request, 'createcred.jinja', {'form': form})
