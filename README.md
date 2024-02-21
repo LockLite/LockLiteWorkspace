@@ -8,6 +8,10 @@ A password manager.
 
 [![Django][Django.py]][Django-url]
 
+[![HTML5][HTML5]][HTML-url]
+
+[![CSS3][CSS3]][CSS-url]
+
 ## Installation
 
 1. Install dependencies
@@ -64,3 +68,9 @@ A password manager.
 
 [Django.py]: https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white
 [Django-url]: https://www.djangoproject.com/
+
+[HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[HTML-url]: https://dev.w3.org/html5/spec-LC/
+
+[CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[CSS-url]: https://www.w3.org/Style/CSS/Overview.en.html
