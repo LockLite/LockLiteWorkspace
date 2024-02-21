@@ -38,7 +38,7 @@
 			{% endfor %}
 			<td style="width: calc(100/{{ datatable_col_length }})" class="cell data">
 				<div class="buttons">
-					<a href={{ datatable_actions.edit }}>
+					<a href="{{ datatable_actions.edit }}/{{ element.id }}">
 						<i class="fa-solid fa-pen"></i>
 					</a>
 					<a href={{ datatable_actions.delete }}>

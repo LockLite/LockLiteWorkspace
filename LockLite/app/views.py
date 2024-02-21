@@ -59,7 +59,7 @@ def index(request, *args, **kwargs):
 		'datatable_col_length': 4,
 		'datatable_actions': {
 			'create': 'createcred',
-			'edit': '',
+			'edit': 'updatecred',
 			'delete': ''
 		},
 		'datatable_columns': [
