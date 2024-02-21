@@ -22,7 +22,9 @@
 				</div>
 			{% endfor %}
 		</div>
-		<p class="infos">{{ link.text }} <a href="{% url link.page %}">{{ link.name }}</a></p>
+		{% if link %}
+			<p class="infos">{{ link.text }} <a href="{% url link.page %}">{{ link.name }}</a></p>
+		{% endif %}
 		<input class="button" type="submit" value="{{ title }}"/>
 	</form>
 {% endblock content %}
