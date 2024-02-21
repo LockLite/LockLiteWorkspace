@@ -91,7 +91,7 @@ class UpdateCredentialForm(forms.ModelForm):
 	credentials_email = forms.EmailField(
 		label="Email",
 		widget=forms.EmailInput(attrs={
-			"placeholder": "Insert your credential email"
+			"placeholder": "Insert your credential email",
 		})
 	)
 	credentials_password = forms.CharField(

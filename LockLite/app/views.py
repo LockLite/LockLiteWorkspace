@@ -125,5 +125,5 @@ def updatecred(request, pk):
 		else:
 			return render(request, 'form.jinja', context)
 	else:
-		context['form'] = UpdateCredentialForm()
+		context['form'] = UpdateCredentialForm(instance=credential)
 		return render(request, 'form.jinja', context)
