@@ -1,3 +1,5 @@
+{% set computed_width = "width: calc(100%/" ~ datatable_columns|length ~ ");" %}
+
 <table class="datatable">
 	<caption class="caption">
 		<div class="content">
@@ -14,7 +16,7 @@
 	<tr class="line head">
 		<td class="cell header">ID</td>
 		{% for col in datatable_columns %}
-			<td style="width: calc(100%/{{ datatable_columns|length }})" class="cell header">
+			<td style="{{ computed_width }}" class="cell header">
 				{{ col.name }}
 			</td>
 		{% endfor %}
@@ -28,7 +30,7 @@
 				<span>{{ loop.index }}</span>
 			</td>
 			{% for col in datatable_columns %}
-				<td style="width: calc(100/{{ datatable_columns|length }})" class="cell data">
+				<td style="{{ computed_width }}" class="cell data">
 					{% if col.key == 'credentials_password' %}
 						<input class="password" type="password" readonly value={{ element[col.key] }}>
 					{% elif col.key == 'label' %}
