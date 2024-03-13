@@ -62,6 +62,9 @@
 	background: none;
 	user-select: text;
 }
+.datatable .line .cell.data.id {
+	color: grey;
+}
 
 /* BUTTONS */
 .datatable .line .cell.data .buttons {

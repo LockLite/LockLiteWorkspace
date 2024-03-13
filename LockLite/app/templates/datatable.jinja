@@ -14,17 +14,21 @@
 	</caption>
 	<thead class="headers">
 	<tr class="line head">
+		<td class="cell header">ID</td>
 		{% for col in datatable_columns %}
 			<td style="width: calc(100%/{{ datatable_col_length }})" class="cell header">
 				{{ col.name }}
 			</td>
 		{% endfor %}
-			<td class="cell header"></td>
+		<td class="cell header"></td>
 	</tr>
 	</thead>
 	<tbody class="body">
 	{% for element in datatable_data %}
 		<tr class="line dataline">
+			<td class="cell data id">
+				<span>{{ forloop.counter }}</span>
+			</td>
 			{% for col in datatable_columns %}
 				<td style="width: calc(100/{{ datatable_col_length }})" class="cell data">
 					{% if col.key == 'credentials_password' %}
@@ -36,7 +40,7 @@
 					{% endif %}
 				</td>
 			{% endfor %}
-			<td style="width: calc(100/{{ datatable_col_length }})" class="cell data">
+			<td class="cell data">
 				<div class="buttons">
 					<a href="{{ datatable_actions.edit }}/{{ element.id }}">
 						<i class="fa-solid fa-pen"></i>
