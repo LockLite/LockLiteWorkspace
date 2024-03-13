@@ -28,7 +28,7 @@
 			{% for col in datatable_columns %}
 				<td style="width: calc(100/{{ datatable_col_length }})" class="cell data">
 					{% if col.key == 'credentials_password' %}
-						<input type="password" readonly value={{ element|get_value:col.key }}>
+						<input class="password" type="password" readonly value={{ element|get_value:col.key }}>
 					{% elif col.key == 'label' %}
 						<b>{{ element|get_value:col.key }}</b>
 					{% else %}
@@ -38,6 +38,9 @@
 			{% endfor %}
 			<td style="width: calc(100/{{ datatable_col_length }})" class="cell data">
 				<div class="buttons">
+					<a class="togglePassword" href="#">
+						<i class="fa-solid fa-eye-slash"></i>
+					</a>
 					<a href="{{ datatable_actions.edit }}/{{ element.id }}">
 						<i class="fa-solid fa-pen"></i>
 					</a>
@@ -49,4 +52,21 @@
 		</tr>
 	{% endfor %}
 	</tbody>
+	<script>
+		const togglePasswords = document.querySelectorAll(".togglePassword");
+		const passwords = document.querySelectorAll(".password");
+
+		togglePasswords.forEach(function(togglePassword, index) {
+			togglePassword.addEventListener("click", function () {
+				// toggle the type attribute of corresponding password input
+				const password = passwords[index];
+				const type = password.getAttribute("type") === "password" ? "text" : "password";
+				password.setAttribute("type", type);
+
+				// toggle the icon
+				const icon = this.querySelector("i");
+				icon.classList.toggle("fa-eye");
+			});
+		});
+	</script>
 </table>
