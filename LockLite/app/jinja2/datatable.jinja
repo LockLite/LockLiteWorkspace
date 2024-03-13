@@ -1,5 +1,3 @@
-{% load custom_filters %}
-
 <table class="datatable">
 	<caption class="caption">
 		<div class="content">
@@ -16,7 +14,7 @@
 	<tr class="line head">
 		<td class="cell header">ID</td>
 		{% for col in datatable_columns %}
-			<td style="width: calc(100%/{{ datatable_col_length }})" class="cell header">
+			<td style="width: calc(100%/{{ datatable_columns|length }})" class="cell header">
 				{{ col.name }}
 			</td>
 		{% endfor %}
@@ -27,16 +25,16 @@
 	{% for element in datatable_data %}
 		<tr class="line dataline">
 			<td class="cell data id">
-				<span>{{ forloop.counter }}</span>
+				<span>{{ loop.index }}</span>
 			</td>
 			{% for col in datatable_columns %}
-				<td style="width: calc(100/{{ datatable_col_length }})" class="cell data">
+				<td style="width: calc(100/{{ datatable_columns|length }})" class="cell data">
 					{% if col.key == 'credentials_password' %}
-						<input class="password" type="password" readonly value={{ element|get_value:col.key }}>
+						<input class="password" type="password" readonly value={{ element[col.key] }}>
 					{% elif col.key == 'label' %}
-						<b>{{ element|get_value:col.key }}</b>
+						<b>{{ element[col.key] }}</b>
 					{% else %}
-						<span>{{ element|get_value:col.key }}</span>
+						<span>{{ element[col.key] }}</span>
 					{% endif %}
 				</td>
 			{% endfor %}

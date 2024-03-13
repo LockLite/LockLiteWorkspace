@@ -3,9 +3,9 @@
 {% block content %}
 	<h1>Update credential</h1>
 	<form action="" method="post" novalidate>
-	  {% csrf_token %}
-	  {{ form.as_p }}
-	  <input type="submit" value="Update">
+		<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+		{{ form.as_p }}
+		<input type="submit" value="Update">
 	</form>
-	<p><a href="{% url 'index' %}">Show credentials</a></p>
+	<p><a href="{{ url('index') }}">Show credentials</a></p>
 {% endblock %}
