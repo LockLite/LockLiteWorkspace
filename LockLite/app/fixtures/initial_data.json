@@ -13,7 +13,7 @@
 		"pk": 1,
 		"fields": {
 			"credentials_email": "cred1@example.com",
-			"credentials_password": "credpass1",
+			"credentials_password": "gAAAAABmBCTUUoR-Px2vWPoLENI3da2TcV847a9u0-arMClWUEbz2gHSyye0NZQzuIg36MtzvAe_xzqkHLYEUEuu9kD791A9RQ==",
 			"label": "example.com",
 			"user": 1
 		}
@@ -23,7 +23,7 @@
 		"pk": 2,
 		"fields": {
 			"credentials_email": "cred2@test.com",
-			"credentials_password": "credpass2",
+			"credentials_password": "gAAAAABmBCgCWryBdsqqIAakgF4sHzkq4Yu7sTQcFzB7Yemr71ke1lAGdnS1wgcIkEs9LljrM7bbqj7Fxc_pADt6zZpXbEX5sw==",
 			"label": "test.com",
 			"user": 1
 		}
