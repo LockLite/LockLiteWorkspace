@@ -10,13 +10,20 @@ const INPUT = {
 
 const togglePassword = (id) => {
 	const input = document.getElementById(id);
-	const classList = event.target.classList;
+	const iconClassList = event.target.classList;
 
-	if (classList.contains(ICON.HIDE)) {
-		classList.replace(ICON.HIDE, ICON.SHOW);
-		input.type = INPUT.SHOW;
-	} else if (classList.contains(ICON.SHOW)) {
-		classList.replace(ICON.SHOW, ICON.HIDE);
-		input.type = INPUT.HIDE;
+	switch (input.type) {
+		case INPUT.HIDE:
+			input.type = INPUT.SHOW;
+			iconClassList.replace(ICON.HIDE, ICON.SHOW);
+			break;
+
+		case INPUT.SHOW:
+			input.type = INPUT.HIDE;
+			iconClassList.replace(ICON.SHOW, ICON.HIDE);
+			break;
+
+		default:
+			break;
 	}
 }
