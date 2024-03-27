@@ -35,12 +35,12 @@
 					{% if col.key == 'credentials_password' %}
 						<div class="password">
 							<i class="toggle-button fa-solid fa-eye-slash" onclick="togglePassword({{ idLine }})"></i>
-							<input id={{ idLine }} type="password" readonly value={{ element[col.key] }}>
+							<input id={{ idLine }} type="password" readonly value="{% if element.pswd_decrypted %}{{ element.pswd_decrypted }}{% endif %}">
 						</div>
 					{% elif col.key == 'label' %}
-						<b>{{ element[col.key] }}</b>
+						<b>{{ element.label }}</b>
 					{% else %}
-						<span>{{ element[col.key] }}</span>
+						<span>{{ element.credentials_email }}</span>
 					{% endif %}
 				</td>
 			{% endfor %}

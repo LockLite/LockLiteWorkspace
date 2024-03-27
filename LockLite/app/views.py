@@ -1,11 +1,14 @@
+from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from cryptography.fernet import Fernet
 from .forms import RegisterForm, LoginForm, AddCredentialForm, UpdateCredentialForm
 from .models import Credential
 
+f = Fernet(settings.ENCRYPT_KEY)
 
 class CustomLoginView(LoginView):
 	authentication_form = LoginForm
@@ -55,7 +58,7 @@ def index(request, *args, **kwargs):
 
 		# Datatable
 		'datatable_title': 'Credentials',
-		'datatable_data': Credential.objects.filter(user_id=request.user.id).values(),
+		'datatable_data': Credential.objects.filter(user_id=request.user.id),
 		'datatable_actions': {
 			'create': 'createcred',
 			'edit': 'updatecred',
@@ -94,6 +97,14 @@ def createcred(request):
 		context['form'] = AddCredentialForm(request.POST)
 		if context['form'].is_valid():
 			credential = context['form'].save(commit=False)
+
+			# Encrypt credential password
+			credential_original = context['form'].cleaned_data['credentials_password']
+			credential_bytes = credential_original.encode('utf-8')
+			credential_encrypted = f.encrypt(credential_bytes)
+			credential_decoded = credential_encrypted.decode('utf-8')
+			credential.credentials_password = credential_decoded
+
 			credential.user = request.user
 			credential.save()
 			return redirect('index')
@@ -120,6 +131,14 @@ def updatecred(request, pk):
 		context['form'] = UpdateCredentialForm(request.POST, instance=credential)
 		if context['form'].is_valid():
 			credential = context['form'].save(commit=False)
+
+			# Encrypt credential password
+			credential_original = context['form'].cleaned_data['credentials_password']
+			credential_bytes = credential_original.encode('utf-8')
+			credential_encrypted = f.encrypt(credential_bytes)
+			credential_decoded = credential_encrypted.decode('utf-8')
+			credential.credentials_password = credential_decoded
+
 			credential.user = request.user
 			credential.save()
 			return redirect('index')
