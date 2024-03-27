@@ -60,6 +60,13 @@ class RegisterForm(UserCreationForm):
 
 
 class AddCredentialForm(forms.ModelForm):
+	label = forms.CharField(
+		label="Name",
+		strip=False,
+		widget=forms.TextInput(attrs={
+			"placeholder": "Insert a name"
+		})
+	)
 	credentials_email = forms.EmailField(
 		label="Email",
 		widget=forms.EmailInput(attrs={
@@ -74,6 +81,14 @@ class AddCredentialForm(forms.ModelForm):
 			"placeholder": "Insert your credential password"
 		})
 	)
+
+	class Meta:
+		model = Credential
+		fields = ['label', 'credentials_email', 'credentials_password']
+		exclude = ['user']
+
+
+class UpdateCredentialForm(forms.ModelForm):
 	label = forms.CharField(
 		label="Name",
 		strip=False,
@@ -81,13 +96,6 @@ class AddCredentialForm(forms.ModelForm):
 			"placeholder": "Insert a name"
 		})
 	)
-
-	class Meta:
-		model = Credential
-		fields = '__all__'
-		exclude = ['user']
-
-class UpdateCredentialForm(forms.ModelForm):
 	credentials_email = forms.EmailField(
 		label="Email",
 		widget=forms.EmailInput(attrs={
@@ -101,15 +109,8 @@ class UpdateCredentialForm(forms.ModelForm):
 			"placeholder": "Insert your credential password"
 		})
 	)
-	label = forms.CharField(
-		label="Name",
-		strip=False,
-		widget=forms.TextInput(attrs={
-			"placeholder": "Insert a name"
-		})
-	)
 
 	class Meta:
 		model = Credential
-		fields = '__all__'
+		fields = ['label', 'credentials_email', 'credentials_password']
 		exclude = ['user']
