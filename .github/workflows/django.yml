@@ -2,9 +2,8 @@ name: Django CI
 
 on:
   push:
-    branches: [ "LockLite/dev" ]
-  pull_request:
-    branches: [ "LockLite/dev" ]
+    branches: [ "master" ]
+#    branches: [ "LockLite/dev" ]
 
 jobs:
   build:
