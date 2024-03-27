@@ -28,13 +28,15 @@
 		<tr class="line dataline">
 			{% set idLine = loop.index %}
 			<td class="cell data id">
-				<span>{{ idLine }}</span>
+				<span class="grey">{{ idLine }}</span>
 			</td>
 			{% for col in datatable_columns %}
 				<td style="{{ computed_width }}" class="cell data">
 					{% if col.key == 'credentials_password' %}
-						<input id={{ idLine }} class="password" type="password" readonly value={{ element[col.key] }}>
-						<i onclick="togglePassword({{ idLine }})" class="toggle-button fa-solid fa-eye-slash"></i>
+						<div class="password">
+							<i class="toggle-button fa-solid fa-eye-slash" onclick="togglePassword({{ idLine }})"></i>
+							<input id={{ idLine }} type="password" readonly value={{ element[col.key] }}>
+						</div>
 					{% elif col.key == 'label' %}
 						<b>{{ element[col.key] }}</b>
 					{% else %}

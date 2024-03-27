@@ -11,8 +11,7 @@
 	padding: 20px 0;
 }
 
-/* BUTTONS */
-
+/* BUTTON */
 .datatable .caption .content .buttons .button {
 	text-decoration: none;
 	background-color: black;
@@ -21,6 +20,7 @@
 	padding: 8px 15px;
 	border-radius: 7px;
 }
+
 .datatable .caption .content .buttons .button:hover {
 	background-color: white;
 	color: black;
@@ -33,6 +33,7 @@
 	font-size: 12px;
 	color: grey;
 }
+
 .datatable .headers .header {
 	border-bottom: 2px solid lightgrey;
 }
@@ -42,8 +43,14 @@
 .datatable .line.head {
 	height: 50px;
 }
+
 .datatable .line.dataline {
 	height: 50px;
+}
+
+/* ICONS */
+.datatable .line.dataline i {
+	color: grey;
 }
 
 /* ----------- CELLS ----------- */
@@ -52,18 +59,28 @@
 	font-size: 14px;
 	border-bottom: 1px solid lightgrey;
 }
+
 .datatable .line .cell.data b {
 	font-weight: 500;
-
 }
+
 .datatable .line .cell.data input {
 	outline: none;
 	border: none;
 	background: none;
 	user-select: text;
 }
-.datatable .line .cell.data.id {
-	color: grey;
+
+.datatable .line .cell.data .password {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.datatable .line .cell.data .password .toggle-button {
+	width: 18px;
+	display: flex;
+	justify-content: center;
 }
 
 /* BUTTONS */
@@ -71,7 +88,7 @@
 	display: flex;
 	gap: 20px;
 }
+
 .datatable .line .cell.data .buttons a {
 	text-decoration: none;
-	color: grey;
 }
