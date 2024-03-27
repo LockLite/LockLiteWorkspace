@@ -26,13 +26,15 @@
 	<tbody class="body">
 	{% for element in datatable_data %}
 		<tr class="line dataline">
+			{% set idLine = loop.index %}
 			<td class="cell data id">
-				<span>{{ loop.index }}</span>
+				<span>{{ idLine }}</span>
 			</td>
 			{% for col in datatable_columns %}
 				<td style="{{ computed_width }}" class="cell data">
 					{% if col.key == 'credentials_password' %}
-						<input class="password" type="password" readonly value={{ element[col.key] }}>
+						<input id={{ idLine }} class="password" type="password" readonly value={{ element[col.key] }}>
+						<i onclick="togglePassword({{ idLine }})" class="toggle-button fa-solid fa-eye-slash"></i>
 					{% elif col.key == 'label' %}
 						<b>{{ element[col.key] }}</b>
 					{% else %}
@@ -42,9 +44,6 @@
 			{% endfor %}
 			<td class="cell data">
 				<div class="buttons">
-					<a class="togglePassword" href="#">
-						<i class="fa-solid fa-eye-slash"></i>
-					</a>
 					<a href="{{ datatable_actions.edit }}/{{ element.id }}">
 						<i class="fa-solid fa-pen"></i>
 					</a>

@@ -1,15 +1,22 @@
-const togglePasswords = document.querySelectorAll(".togglePassword");
-const passwords = document.querySelectorAll(".password");
+const ICON = {
+	SHOW : 'fa-eye',
+	HIDE : 'fa-eye-slash',
+}
 
-togglePasswords.forEach(function(togglePassword, index) {
-	togglePassword.addEventListener("click", function () {
-		// toggle the type attribute of corresponding password input
-		const password = passwords[index];
-		const type = password.getAttribute("type") === "password" ? "text" : "password";
-		password.setAttribute("type", type);
+const INPUT = {
+	SHOW : 'text',
+	HIDE : 'password',
+}
 
-		// toggle the icon
-		const icon = this.querySelector("i");
-		icon.classList.toggle("fa-eye");
-	});
-});
+const togglePassword = (id) => {
+	const input = document.getElementById(id);
+	const classList = event.target.classList;
+
+	if (classList.contains(ICON.HIDE)) {
+		classList.replace(ICON.HIDE, ICON.SHOW);
+		input.type = INPUT.SHOW;
+	} else if (classList.contains(ICON.SHOW)) {
+		classList.replace(ICON.SHOW, ICON.HIDE);
+		input.type = INPUT.HIDE;
+	}
+}
