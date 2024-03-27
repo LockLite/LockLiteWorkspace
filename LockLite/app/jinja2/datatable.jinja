@@ -1,4 +1,7 @@
-{% set computed_width = "width: calc(100%/" ~ datatable_columns|length ~ ");" %}
+{% set id_width = '30px' %}
+{% set buttons_width = '50px' %}
+{% set computed_width = "calc( calc( 100% - " ~ id_width ~ " - " ~ buttons_width ~ " ) / " ~ datatable_columns|length ~ " )" %}
+
 
 <table class="datatable">
 	<caption class="caption">
@@ -14,24 +17,24 @@
 	</caption>
 	<thead class="headers">
 	<tr class="line head">
-		<td class="cell header">ID</td>
+		<td style="width: {{ id_width }};" class="cell header">ID</td>
 		{% for col in datatable_columns %}
-			<td style="{{ computed_width }}" class="cell header">
+			<td style="width: {{ computed_width }};" class="cell header">
 				{{ col.name }}
 			</td>
 		{% endfor %}
-		<td class="cell header"></td>
+		<td style="width: {{ buttons_width }};" class="cell header"></td>
 	</tr>
 	</thead>
 	<tbody class="body">
 	{% for element in datatable_data %}
 		<tr class="line dataline">
 			{% set idLine = loop.index %}
-			<td class="cell data id">
+			<td style="width: {{ id_width }};" class="cell data id">
 				<span class="grey">{{ idLine }}</span>
 			</td>
 			{% for col in datatable_columns %}
-				<td style="{{ computed_width }}" class="cell data">
+				<td style="width: {{ computed_width }};" class="cell data">
 					{% if col.key == 'credentials_password' %}
 						<div class="password">
 							<i class="toggle-button fa-solid fa-eye-slash" onclick="togglePassword({{ idLine }})"></i>
@@ -44,7 +47,7 @@
 					{% endif %}
 				</td>
 			{% endfor %}
-			<td class="cell data">
+			<td style="width: {{ buttons_width }};" class="cell data">
 				<div class="buttons">
 					<a href="{{ datatable_actions.edit }}/{{ element.id }}">
 						<i class="fa-solid fa-pen"></i>
