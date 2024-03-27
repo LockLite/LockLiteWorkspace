@@ -18,11 +18,15 @@ A password manager.
     ```sh
     docker compose up -d
    ```
-3. Seed database
+3. Make migrations
+    ```sh
+    python manage.py makemigrations app
+    python manage.py migrate
+   ```
+4. Seed database
     ```sh
     python manage.py loaddata initial_data.json
    ```
-
 
 ## Usage
 
@@ -38,8 +42,9 @@ A password manager.
     ```sh
     docker stop locklite-postgresql
    ```
-   
+
 ## Database
+
 1. Make Migrations
     ```sh
     python manage.py makemigrations
@@ -63,10 +68,13 @@ A password manager.
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [Django.py]: https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white
+
 [Django-url]: https://www.djangoproject.com/
 
 [HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+
 [HTML-url]: https://dev.w3.org/html5/spec-LC/
 
 [CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+
 [CSS-url]: https://www.w3.org/Style/CSS/Overview.en.html
