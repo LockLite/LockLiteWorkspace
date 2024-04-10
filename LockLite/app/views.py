@@ -21,7 +21,8 @@ class CustomLoginView(LoginView):
 			'text': "Don't have an account?",
 			'name': link_page.capitalize(),
 			'page': link_page
-		}
+		},
+		'form_button_color': 'blue'
 	}
 
 
@@ -33,7 +34,8 @@ def register(request, *args, **kwargs):
 			'text': "Already has an account?",
 			'name': link_page.capitalize(),
 			'page': link_page
-		}
+		},
+		'form_button_color': 'blue'
 	}
 	if request.method == 'GET':
 		context['form'] = RegisterForm()
@@ -92,7 +94,8 @@ def createcred(request):
 			'text': "Show credentials",
 			'name': "here",
 			'page': link_page
-		}
+		},
+		'form_button_color': 'blue'
 	}
 	if request.method == 'GET':
 		context['form'] = AddCredentialForm()
@@ -126,7 +129,8 @@ def updatecred(request, pk):
 			'name': "here",
 			'page': link_page
 		},
-		'form_credential': credential
+		'form_credential': credential,
+		'form_button_color': 'blue'
 	}
 	if request.method == 'GET':
 		context['form'] = UpdateCredentialForm(instance=credential)
@@ -161,6 +165,7 @@ def deletecred(request, pk):
 			'page': link_page
 		},
 		'form_credential': credential,
+		'form_button_color': 'red'
 	}
 	if request.method == 'GET':
 		context['form'] = DeleteCredentialForm(instance=credential)

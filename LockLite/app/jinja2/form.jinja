@@ -25,6 +25,6 @@
 		{% if form_link %}
 			<p class="infos">{{ form_link.text }} <a href="{{ url(form_link.page) }}">{{ form_link.name }}</a></p>
 		{% endif %}
-		<input class="button" type="submit" value="{{ form_title }}"/>
+		<input class="button {{ form_button_color }}" type="submit" value="{{ form_title }}"/>
 	</form>
 {% endblock content %}
