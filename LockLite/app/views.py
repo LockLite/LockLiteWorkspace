@@ -5,10 +5,11 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from cryptography.fernet import Fernet
-from .forms import RegisterForm, LoginForm, AddCredentialForm, UpdateCredentialForm
+from .forms import RegisterForm, LoginForm, AddCredentialForm, UpdateCredentialForm, DeleteCredentialForm
 from .models import Credential
 
 f = Fernet(settings.ENCRYPT_KEY)
+
 
 class CustomLoginView(LoginView):
 	authentication_form = LoginForm
@@ -62,7 +63,7 @@ def index(request, *args, **kwargs):
 		'datatable_actions': {
 			'create': 'createcred',
 			'edit': 'updatecred',
-			'delete': ''
+			'delete': 'deletecred'
 		},
 		'datatable_columns': [
 			{
@@ -93,26 +94,26 @@ def createcred(request):
 			'page': link_page
 		}
 	}
-	if request.method == 'POST':
-		context['form'] = AddCredentialForm(request.POST)
-		if context['form'].is_valid():
-			credential = context['form'].save(commit=False)
-
-			# Encrypt credential password
-			credential_original = context['form'].cleaned_data['credentials_password']
-			credential_bytes = credential_original.encode('utf-8')
-			credential_encrypted = f.encrypt(credential_bytes)
-			credential_decoded = credential_encrypted.decode('utf-8')
-			credential.credentials_password = credential_decoded
-
-			credential.user = request.user
-			credential.save()
-			return redirect('index')
-		else:
-			return render(request, 'form.jinja', context)
-	else:
+	if request.method == 'GET':
 		context['form'] = AddCredentialForm()
 		return render(request, 'form.jinja', context)
+	if request.method == 'POST':
+		context['form'] = AddCredentialForm(request.POST)
+		if not context['form'].is_valid():
+			return render(request, 'form.jinja', context)
+		credential = context['form'].save(commit=False)
+
+		# Encrypt credential password
+		credential_original = context['form'].cleaned_data['credentials_password']
+		credential_bytes = credential_original.encode('utf-8')
+		credential_encrypted = f.encrypt(credential_bytes)
+		credential_decoded = credential_encrypted.decode('utf-8')
+		credential.credentials_password = credential_decoded
+
+		credential.user = request.user
+		credential.save()
+		return redirect('index')
+
 
 @login_required(login_url="login")
 def updatecred(request, pk):
@@ -127,23 +128,46 @@ def updatecred(request, pk):
 		},
 		'form_credential': credential
 	}
-	if request.method == 'POST':
-		context['form'] = UpdateCredentialForm(request.POST, instance=credential)
-		if context['form'].is_valid():
-			credential = context['form'].save(commit=False)
-
-			# Encrypt credential password
-			credential_original = context['form'].cleaned_data['credentials_password']
-			credential_bytes = credential_original.encode('utf-8')
-			credential_encrypted = f.encrypt(credential_bytes)
-			credential_decoded = credential_encrypted.decode('utf-8')
-			credential.credentials_password = credential_decoded
-
-			credential.user = request.user
-			credential.save()
-			return redirect('index')
-		else:
-			return render(request, 'form.jinja', context)
-	else:
+	if request.method == 'GET':
 		context['form'] = UpdateCredentialForm(instance=credential)
 		return render(request, 'form.jinja', context)
+	if request.method == 'POST':
+		context['form'] = UpdateCredentialForm(request.POST, instance=credential)
+		if not context['form'].is_valid():
+			return render(request, 'form.jinja', context)
+		credential = context['form'].save(commit=False)
+
+		# Encrypt credential password
+		credential_original = context['form'].cleaned_data['credentials_password']
+		credential_bytes = credential_original.encode('utf-8')
+		credential_encrypted = f.encrypt(credential_bytes)
+		credential_decoded = credential_encrypted.decode('utf-8')
+		credential.credentials_password = credential_decoded
+
+		credential.user = request.user
+		credential.save()
+		return redirect('index')
+
+
+@login_required(login_url="login")
+def deletecred(request, pk):
+	credential = Credential.objects.get(pk=pk)
+	link_page = 'index'
+	context = {
+		'form_title': 'Delete credential',
+		'form_link': {
+			'text': '',
+			'name': 'Cancel',
+			'page': link_page
+		},
+		'form_credential': credential,
+	}
+	if request.method == 'GET':
+		context['form'] = DeleteCredentialForm(instance=credential)
+		return render(request, 'form.jinja', context)
+	if request.method == 'POST':
+		context['form'] = DeleteCredentialForm(request.POST, instance=credential)
+		if not context['form'].is_valid():
+			return render(request, 'form.jinja', context)
+		credential.delete()
+		return redirect('index')

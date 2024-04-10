@@ -29,6 +29,7 @@ urlpatterns = [
 	path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 	path('createcred/', views.createcred, name='createcred'),
 	path('updatecred/<int:pk>/', views.updatecred, name='updatecred'),
+	path('deletecred/<int:pk>/', views.deletecred, name='deletecred'),
 ]
 
 if settings.DEBUG:

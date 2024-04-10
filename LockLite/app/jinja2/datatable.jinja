@@ -38,7 +38,8 @@
 					{% if col.key == 'credentials_password' %}
 						<div class="password">
 							<i class="toggle-button fa-solid fa-eye-slash" onclick="togglePassword({{ idLine }})"></i>
-							<input id={{ idLine }} type="password" readonly value="{% if element.pswd_decrypted %}{{ element.pswd_decrypted }}{% endif %}">
+							<input id={{ idLine }} type="password" readonly
+								   value="{% if element.pswd_decrypted %}{{ element.pswd_decrypted }}{% endif %}">
 						</div>
 					{% elif col.key == 'label' %}
 						<b>{{ element.label }}</b>
@@ -52,7 +53,7 @@
 					<a href="{{ datatable_actions.edit }}/{{ element.id }}">
 						<i class="fa-solid fa-pen"></i>
 					</a>
-					<a href={{ datatable_actions.delete }}>
+					<a href="{{ datatable_actions.delete }}/{{ element.id }}">
 						<i class="fa-solid fa-trash"></i>
 					</a>
 				</div>

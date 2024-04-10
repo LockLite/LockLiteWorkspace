@@ -114,3 +114,9 @@ class UpdateCredentialForm(forms.ModelForm):
 		model = Credential
 		fields = ['label', 'credentials_email', 'credentials_password']
 		exclude = ['user']
+
+
+class DeleteCredentialForm(forms.ModelForm):
+	class Meta:
+		model = Credential
+		fields = []
