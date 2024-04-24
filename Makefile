@@ -30,6 +30,10 @@ db:
 run:
 	python $(MANAGEPY) runserver
 
+test:
+	# app.tests.FILE.CLASS.FUNCTION
+	python $(MANAGEPY) test app.tests
+
 stop:
 	docker stop $(DOCKER_NAME)
 

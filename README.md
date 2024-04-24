@@ -31,17 +31,24 @@ A password manager.
 ## Usage
 
 - Start Docker
-    ```sh
-    docker start locklite-postgresql
-   ```
+  ```sh
+  docker start locklite-postgresql
+  ```
+
 - Run server
-    ```sh
-    python manage.py runserver
-    ```
+  ```sh
+  python manage.py runserver
+  ```
+
+- Run unit tests
+  ```sh
+  python LockLite/manage.py test app
+  ```
+
 - Stop Docker
-    ```sh
-    docker stop locklite-postgresql
-   ```
+  ```sh
+  docker stop locklite-postgresql
+  ```
 
 ## Database
 
