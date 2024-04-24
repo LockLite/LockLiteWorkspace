@@ -42,7 +42,7 @@ A password manager.
 
 - Run unit tests
   ```sh
-  python LockLite/manage.py test app.tests
+  python manage.py test app.tests
   ```
 
 - Stop Docker
