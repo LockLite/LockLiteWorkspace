@@ -20,7 +20,7 @@ data:
 
 db:
 	@echo "Launch Postgresql: psql postgres "
-	@echo "List tables: \l or \list"
+	@echo "List databases: \l or \list"
 	@echo "Connect to a database: \c 'database name'"
 	@echo "List the tables in a database: \dt"
 	@echo "Exit Postgresql: \q"
