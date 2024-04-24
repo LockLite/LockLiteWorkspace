@@ -16,3 +16,9 @@ class TestsUrls(TestCase):
 
 	def test_register(self):
 		self._test_url('register')
+
+	def test_logout(self):
+		self._test_url('logout')
+
+	def test_createcred(self):
+		self._test_url('createcred')
