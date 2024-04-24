@@ -29,6 +29,21 @@ urlpatterns = [
 	path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 	path('createcred/', views.createcred, name='createcred'),
 	path('updatecred/<int:pk>/', views.updatecred, name='updatecred'),
+	path('password-reset/',
+		 auth_views.PasswordResetView.as_view(
+			 template_name='password_reset.jinja',
+			 html_email_template_name='password_reset_email.jinja'
+		 ),
+		 name='password-reset'
+	),
+	path('password-reset/done/',
+		 auth_views.PasswordResetDoneView.as_view(
+			 template_name='password_reset_done.jinja',
+		 ),
+		 name='password-reset-done'
+	),
+	path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.jinja'), name='password_reset_confirm'),
+	path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.jinja'), name='password_reset_complete'),
 	path('deletecred/<int:pk>/', views.deletecred, name='deletecred'),
 ]
 

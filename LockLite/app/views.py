@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from cryptography.fernet import Fernet
+
 from .forms import RegisterForm, LoginForm, AddCredentialForm, UpdateCredentialForm, DeleteCredentialForm
 from .models import Credential
 
@@ -176,3 +177,5 @@ def deletecred(request, pk):
 			return render(request, 'form.jinja', context)
 		credential.delete()
 		return redirect('index')
+
+
